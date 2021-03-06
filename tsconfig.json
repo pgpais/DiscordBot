@@ -15,6 +15,6 @@
 		"resolveJsonModule": true,
 		"importHelpers": true
 	},
-	"include": ["commands, events, handlers"],
-	"exclude": ["node_modules", "**/*.spec.ts"]
+	"include": ["*.ts"],
+	"exclude": ["node_modules"]
 }

@@ -8,5 +8,9 @@ module.exports = (Discord, client, message) => {
 
   const command = client.commands.get(cmd);
 
-  if (command) command.execute(client, message, args, Discord);
+  if (command){
+     command.execute(client, message, args, Discord)
+  } else {
+    message.channel.send('Unknown command! Speak to the developers if you think you found a bug!');
+  };
 };

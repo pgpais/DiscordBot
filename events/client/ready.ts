@@ -1,7 +1,7 @@
 import { IExecute } from "../../interfaces/IEvents";
 
 export const name:string = 'ready';
-export const execute:IExecute = (client) => {
+export const execute:IExecute = async (client) => {
   console.log("I am online");
 }
 

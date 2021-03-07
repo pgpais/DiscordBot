@@ -1,4 +1,5 @@
 import axios from "axios";
+import stringSimilarity from "string-similarity";
 import { IExecute } from "../interfaces/ICommands";
 import data from "../radios.json";
 
@@ -7,7 +8,14 @@ export const description = "get what is playing";
 export const aliases = ["np"];
 export const execute: IExecute = async (client, message, args) => {
   //message.channel.send('pong!');
-  let radio = data[args.join(" ").toUpperCase()];
+
+  const req = args.join(" ").toUpperCase();
+  var keys = [];
+  for (var k in data) keys.push(k);
+
+  let closestMatch = stringSimilarity.findBestMatch(req, keys).bestMatch.target;
+
+  let radio = data[closestMatch];
   let radioId = radio.id;
 
   const url: string = `https://prod.radio-api.net/stations/now-playing?stationIds=${radioId}`;

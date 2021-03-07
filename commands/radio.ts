@@ -1,5 +1,7 @@
 import ytdl from "ytdl-core";
 import { IExecute } from "../interfaces/ICommands";
+import data from "../radios.json"
+
 
 export const name = "radio";
 export const description = "radio stuff";
@@ -20,30 +22,30 @@ export const execute: IExecute = async (client, message, args: string[]) => {
 
   let radio: string = " ";
   
-  switch (args.join("").toLowerCase()) {
-    case "bob":
-      radio = process.env.DISCORD_BOB;
-      break;
-    case "bobbestrock":
-      radio = process.env.DISCORD_BOB_BEST_OF_ROCK;
-      break;
-    case "bobclassicrock":
-      radio = process.env.DISCORD_BOB_CLASSIC_ROCK;
-      break;
-    case "bobaltrock":
-      radio = process.env.DISCORD_BOB_ALTERNATIVE;
-      break;
-    case "bobmetal":
-      radio = process.env.DISCORD_BOB_METAL;
-      break;
-    default:
+  // switch (args.join("").toLowerCase()) {
+  //   case "bob":
+  //     radio = process.env.DISCORD_BOB;
+  //     break;
+  //   case "bobbestrock":
+  //     radio = process.env.DISCORD_BOB_BEST_OF_ROCK;
+  //     break;
+  //   case "bobclassicrock":
+  //     radio = process.env.DISCORD_BOB_CLASSIC_ROCK;
+  //     break;
+  //   case "bobaltrock":
+  //     radio = process.env.DISCORD_BOB_ALTERNATIVE;
+  //     break;
+  //   case "bobmetal":
+  //     radio = process.env.DISCORD_BOB_METAL;
+  //     break;
+    // default:
       if(isLink(args[0])) // Let user radio for links
         radio = args[0];
       else{
-        message.channel.send("Couldn't parse link");
+        radio = data[args.join(" ").toLocaleUpperCase()];
       }
-      break;
-  }
+      // break;
+  // }
 
 
   if (radio !== " ") {

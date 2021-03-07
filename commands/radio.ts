@@ -30,7 +30,7 @@ export const execute: IExecute = async (client, message, args: string[]) => {
   if (radio !== " ") {
     const connection = await voiceChannel.join();
     connection
-      .play(ytdl(radio, { filter: "audioonly" }), { seek: 0, volume: 1 })
+      .play(radio, { seek: 0, volume: 1 })
       .on("finish", () => {
         voiceChannel.leave();
       });

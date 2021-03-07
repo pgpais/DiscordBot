@@ -8,6 +8,6 @@ export const execute: IExecute = async (client, message, args) => {
   if (!voiceChannel)
     return message.channel.send("You need to be in a voice channel sir");
 
-  await voiceChannel.leave();
+  voiceChannel.leave();
   await message.channel.send("Im leaving");
 };

@@ -9,11 +9,12 @@ export const aliases = ["np"];
 export const execute: IExecute = async (client, message, args) => {
   //message.channel.send('pong!');
 
-  const req = args.join(" ").toUpperCase();
+  let closestMatch = args.join(" ").toUpperCase();
   var keys = [];
   for (var k in data) keys.push(k);
 
-  let closestMatch = stringSimilarity.findBestMatch(req, keys).bestMatch.target;
+  closestMatch = stringSimilarity.findBestMatch(closestMatch, keys).bestMatch
+    .target;
 
   let radio = data[closestMatch];
   let radioId = radio.id;

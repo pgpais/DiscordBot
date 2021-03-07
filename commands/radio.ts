@@ -21,7 +21,7 @@ export const execute: IExecute = async (client, message, args: string[]) => {
 
   // console.log(video.url);
 
-  let radio: string = "";
+  let radio: Radio;
 
   // switch (args.join("").toLowerCase()) {
   //   case "bob":
@@ -45,14 +45,13 @@ export const execute: IExecute = async (client, message, args: string[]) => {
     // Let user radio for links
     radiolink = args[0];
   else {
-    radio = data[args.join(" ").toLocaleUpperCase()];
-    const radiojson: Radio = JSON.parse(radio);
-    radiolink = radiojson.link;
+    radio = data[args.join(" ").toUpperCase()];
+    radiolink = radio.link;
   }
   // break;
   // }
 
-  if (radio !== " ") {
+  if (radio) {
     const connection = await voiceChannel.join();
     connection.play(radiolink, { seek: 0, volume: 1 }).on("finish", () => {
       voiceChannel.leave();

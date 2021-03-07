@@ -4,7 +4,7 @@
     "link": "http://radiocast.rtp.pt/antena380a.mp3"
   },
   "BOB": {
-    "id": "radiobob-bestofrock",
+    "id": "radiobob",
     "link": "http://streams.radiobob.de/bob-live/mp3-192/streams.radiobob.de/"
   },
   "BOB BEST OF ROCK": {
@@ -12,15 +12,15 @@
     "link": "https://bob.hoerradar.de/radiobob-bestofrock-mp3-hq"
   },
   "BOB CLASSIC ROCK": {
-    "id": "radiobob-bestofrock",
+    "id": "radiobob-classicrock",
     "link": "https://bob.hoerradar.de/radiobob-classicrock-mp3-hq"
   },
   "BOB METAL": {
-    "id": "radiobob-bestofrock",
+    "id": "radiobob-metal",
     "link": "https://bob.hoerradar.de/radiobob-metal-mp3-hq"
   },
   "BOB ALTERNATIVE": {
-    "id": "radiobob-bestofrock",
+    "id": "radiobob-alternative",
     "link": "https://bob.hoerradar.de/radiobob-alternativerock-mp3-hq"
   }
 }

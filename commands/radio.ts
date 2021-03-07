@@ -54,7 +54,7 @@ export const execute: IExecute = async (client, message, args: string[]) => {
         voiceChannel.leave();
       });
 
-    await message.reply(`${args[0].toUpperCase()} is playing`);
+    await message.reply(`${args.join(" ").toUpperCase()} is playing`);
   }
 };
 

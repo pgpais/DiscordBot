@@ -20,12 +20,28 @@ export const execute: IExecute = async (client, message, args: string[]) => {
 
   let radio: string = " ";
 
-  switch (args[0].toLowerCase()) {
+  switch (args.join(" ").toLowerCase()) {
     case "bob":
       radio = process.env.DISCORD_BOB;
+      break;
+    case "bobbest":
+      radio = process.env.DISCORD_BOB_BEST_OF_ROCK;
+      break;
+    case "bobalt":
+      radio = process.env.DISCORD_BOB_ALTERNATIVE;
+      break;
+    case "bobmetal":
+      radio = process.env.DISCORD_BOB_METAL;
+      break;
     default:
+      if(isLink(args[0])) // Let user radio for links
+        radio = args[0];
+      else{
+        message.channel.send("Couldn't parse link");
+      }
       break;
   }
+
 
   if (radio !== " ") {
     const connection = await voiceChannel.join();
@@ -38,3 +54,15 @@ export const execute: IExecute = async (client, message, args: string[]) => {
     await message.reply(`${args[0].toUpperCase()} is playing`);
   }
 };
+
+
+const isLink = (link:string) => {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  
+  return !!pattern.test(link);
+}

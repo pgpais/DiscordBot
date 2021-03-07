@@ -40,19 +40,21 @@ export const execute: IExecute = async (client, message, args: string[]) => {
   //     radio = process.env.DISCORD_BOB_METAL;
   //     break;
   // default:
+  var radiolink: string;
   if (isLink(args[0]))
     // Let user radio for links
-    radio = args[0];
+    radiolink = args[0];
   else {
     radio = data[args.join(" ").toLocaleUpperCase()];
+    const radiojson: Radio = JSON.parse(radio);
+    radiolink = radiojson.link;
   }
   // break;
   // }
 
   if (radio !== " ") {
-    const radiojson: Radio = JSON.parse(radio);
     const connection = await voiceChannel.join();
-    connection.play(radiojson.link, { seek: 0, volume: 1 }).on("finish", () => {
+    connection.play(radiolink, { seek: 0, volume: 1 }).on("finish", () => {
       voiceChannel.leave();
     });
 

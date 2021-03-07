@@ -1,7 +1,8 @@
 import ytdl from "ytdl-core";
 import { IExecute } from "../interfaces/ICommands";
-import data from "../radios.json"
+import data from "../radios.json";
 
+import { Radio } from "./radios";
 
 export const name = "radio";
 export const description = "radio stuff";
@@ -20,8 +21,8 @@ export const execute: IExecute = async (client, message, args: string[]) => {
 
   // console.log(video.url);
 
-  let radio: string = " ";
-  
+  let radio: string = "";
+
   // switch (args.join("").toLowerCase()) {
   //   case "bob":
   //     radio = process.env.DISCORD_BOB;
@@ -38,36 +39,37 @@ export const execute: IExecute = async (client, message, args: string[]) => {
   //   case "bobmetal":
   //     radio = process.env.DISCORD_BOB_METAL;
   //     break;
-    // default:
-      if(isLink(args[0])) // Let user radio for links
-        radio = args[0];
-      else{
-        radio = data[args.join(" ").toLocaleUpperCase()];
-      }
-      // break;
+  // default:
+  if (isLink(args[0]))
+    // Let user radio for links
+    radio = args[0];
+  else {
+    radio = data[args.join(" ").toLocaleUpperCase()];
+  }
+  // break;
   // }
 
-
   if (radio !== " ") {
+    const radiojson: Radio = JSON.parse(radio);
     const connection = await voiceChannel.join();
-    connection
-      .play(radio, { seek: 0, volume: 1 })
-      .on("finish", () => {
-        voiceChannel.leave();
-      });
+    connection.play(radiojson.link, { seek: 0, volume: 1 }).on("finish", () => {
+      voiceChannel.leave();
+    });
 
     await message.reply(`${args.join(" ").toUpperCase()} is playing`);
   }
 };
 
+const isLink = (link: string) => {
+  var pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
 
-const isLink = (link:string) => {
-  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  
   return !!pattern.test(link);
-}
+};

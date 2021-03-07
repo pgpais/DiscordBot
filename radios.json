@@ -8,11 +8,11 @@
     "link": "http://streams.radiobob.de/bob-live/mp3-192/streams.radiobob.de/"
   },
   "BOB BEST OF ROCK": {
-    "id": "radiobob-bestofrock",
+    "id": "radiobobbestofrock",
     "link": "https://bob.hoerradar.de/radiobob-bestofrock-mp3-hq"
   },
   "BOB CLASSIC ROCK": {
-    "id": "radiobob-classicrock",
+    "id": "radiobobclassicrock",
     "link": "https://bob.hoerradar.de/radiobob-classicrock-mp3-hq"
   },
   "BOB METAL": {
@@ -20,7 +20,7 @@
     "link": "https://bob.hoerradar.de/radiobob-metal-mp3-hq"
   },
   "BOB ALTERNATIVE": {
-    "id": "radiobob-alternative",
+    "id": "radiobobalternative",
     "link": "https://bob.hoerradar.de/radiobob-alternativerock-mp3-hq"
   }
 }

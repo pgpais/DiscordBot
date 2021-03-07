@@ -53,9 +53,11 @@ export const execute: IExecute = async (client, message, args: string[]) => {
 
   if (radio) {
     const connection = await voiceChannel.join();
-    connection.play(radiolink, { seek: 0, volume: 1 }).on("finish", () => {
-      voiceChannel.leave();
-    });
+    connection
+      .play(radiolink, { seek: 0, volume: 1, bitrate: "auto" })
+      .on("finish", () => {
+        voiceChannel.leave();
+      });
 
     await message.reply(`${args.join(" ").toUpperCase()} is playing`);
   }

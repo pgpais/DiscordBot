@@ -28,7 +28,11 @@ export const execute: IExecute = async (client, message, args) => {
     // console.log(video.url);
     const connection = await voiceChannel.join();
     connection
-      .play(ytdl(video.url, { filter: "audioonly" }), { seek: 0, volume: 1 })
+      .play(ytdl(video.url, { filter: "audioonly" }), {
+        seek: 0,
+        volume: 1,
+        bitrate: "auto",
+      })
       .on("finish", () => {
         voiceChannel.leave();
       });

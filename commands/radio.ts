@@ -19,15 +19,18 @@ export const execute: IExecute = async (client, message, args: string[]) => {
   // console.log(video.url);
 
   let radio: string = " ";
-
-  switch (args.join(" ").toLowerCase()) {
+  
+  switch (args.join("").toLowerCase()) {
     case "bob":
       radio = process.env.DISCORD_BOB;
       break;
-    case "bobbest":
+    case "bobbestrock":
       radio = process.env.DISCORD_BOB_BEST_OF_ROCK;
       break;
-    case "bobalt":
+    case "bobclassicrock":
+      radio = process.env.DISCORD_BOB_CLASSIC_ROCK;
+      break;
+    case "bobaltrock":
       radio = process.env.DISCORD_BOB_ALTERNATIVE;
       break;
     case "bobmetal":

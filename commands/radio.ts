@@ -38,7 +38,7 @@ export const execute: IExecute = async (client, message, args: string[]) => {
     var keys = [];
     for (var k in data) keys.push(k);
 
-    let closestMatch = stringSimilarity.findBestMatch(req, keys).bestMatch
+    const closestMatch = stringSimilarity.findBestMatch(req, keys).bestMatch
       .target;
     radio = data[closestMatch];
     radiolink = radio.link;
@@ -54,7 +54,7 @@ export const execute: IExecute = async (client, message, args: string[]) => {
         voiceChannel.leave();
       });
 
-    await message.reply(`${args.join(" ").toUpperCase()} is playing`);
+    await message.reply(`Radio ${req} is playing`);
   }
 };
 

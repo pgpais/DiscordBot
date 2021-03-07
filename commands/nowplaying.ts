@@ -22,7 +22,9 @@ export const execute: IExecute = async (client, message, args) => {
 
   try {
     const response = await axios.get(url);
-    message.channel.send(response.data[0].title);
+    message.channel.send(
+      `Right now on ${closestMatch} it's playing ${response.data[0].title}`
+    );
   } catch (exception) {
     process.stderr.write(`ERROR received from ${url}: ${exception}\n`);
   }

@@ -13,7 +13,6 @@ interface Radios {
 
 export const name = "radios";
 export const description = "List all radios";
-export const aliases = ["r"];
 export const execute: IExecute = async (client, message, args) => {
   const da = data;
   var str = "";

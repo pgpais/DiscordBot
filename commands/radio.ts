@@ -6,6 +6,8 @@ import { Radio } from "./radios";
 
 export const name = "radio";
 export const description = "radio stuff";
+export const aliases = ["r"];
+
 export const execute: IExecute = async (client, message, args: string[]) => {
   const voiceChannel = message.member.voice.channel;
 

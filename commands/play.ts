@@ -4,6 +4,7 @@ import { IExecute } from "../interfaces/ICommands";
 
 export const name = "play";
 export const description = "play stuff";
+export const aliases = ["p"];
 export const execute: IExecute = async (client, message, args) => {
   const voiceChannel = message.member.voice.channel;
 

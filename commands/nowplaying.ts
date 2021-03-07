@@ -4,6 +4,7 @@ import data from "../radios.json";
 
 export const name = "nowplaying";
 export const description = "get what is playing";
+export const aliases = ["np"];
 export const execute: IExecute = async (client, message, args) => {
   //message.channel.send('pong!');
   let radio = data[args.join(" ").toUpperCase()];

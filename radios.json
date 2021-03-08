@@ -22,5 +22,10 @@
   "BOB ALTERNATIVE": {
     "id": "radiobobalternative",
     "link": "https://bob.hoerradar.de/radiobob-alternativerock-mp3-hq"
+  },{
+    "LOFI":{
+      "id": "lofi",
+      "link": "https://lofi.stream.laut.fm/lofi"
+    }
   }
 }
